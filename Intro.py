@@ -158,3 +158,6 @@ with col4:
     )
 
 st.markdown("<br><p style='text-align: center; color: #aaa; font-size: 0.8rem;'>© 2026 Portafolio Digital de IA</p>", unsafe_allow_html=True)
+
+# --- PIE DE PÁGINA ---
+st.markdown("<br><br><p style='text-align: center; color: #888;'>Hecho con ❤️ y Streamlit</p>", unsafe_allow_html=True)
