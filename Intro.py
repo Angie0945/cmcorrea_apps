@@ -1,212 +1,95 @@
 import streamlit as st
 from PIL import Image
 
-# ---------------- CONFIGURACIÓN ----------------
-st.set_page_config(
-    page_title="🚀 Portafolio de Aplicaciones IA",
-    page_icon="🤖",
-    layout="wide",
-    initial_sidebar_state="expanded"
-)
-
-# ---------------- ESTILOS ----------------
-st.markdown("""
-<style>
-
-/* Fondo general */
-.stApp {
-    background: linear-gradient(to bottom, #f8fbff, #eaf4ff);
-    color: black !important;
-}
-
-/* Todo el texto negro */
-html, body, [class*="css"], p, div, span, label {
-    color: black !important;
-}
-
-/* Sidebar */
-section[data-testid="stSidebar"] {
-    background-color: #dceeff !important;
-}
-
-section[data-testid="stSidebar"] * {
-    color: black !important;
-}
-
-/* Títulos */
-.main-title {
-    text-align: center;
-    font-size: 48px;
-    font-weight: bold;
-    color: black !important;
-    margin-bottom: 10px;
-}
-
-.subtitle {
-    text-align: center;
-    font-size: 20px;
-    color: black !important;
-    margin-bottom: 30px;
-}
-
-/* Headers */
-h1, h2, h3, h4, h5, h6 {
-    color: black !important;
-}
-
-/* Tarjetas */
-.card {
-    background-color: white;
-    padding: 20px;
-    border-radius: 18px;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
-    text-align: center;
-    margin-bottom: 25px;
-    min-height: 430px;
-    border: 1px solid #d9e6f2;
-}
-
-/* Botón */
-.link-button {
-    display: inline-block;
-    padding: 10px 18px;
-    background-color: #0b3d91;
-    color: white !important;
-    text-decoration: none;
-    border-radius: 10px;
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-.link-button:hover {
-    background-color: #072c66;
-}
-
-/* Separador */
-hr {
-    border: 1px solid #b0c4de;
-}
-
-</style>
-""", unsafe_allow_html=True)
-
-# ---------------- HEADER ----------------
-st.markdown('<div class="main-title">🤖 Portafolio de Aplicaciones con Inteligencia Artificial</div>', unsafe_allow_html=True)
-
-st.markdown("""
-<div class="subtitle">
-Explora proyectos de visión computacional, voz, OCR, RAG y sistemas multimodales 🚀
-</div>
-""", unsafe_allow_html=True)
+# ---------------- TÍTULO ----------------
+st.title("Aplicaciones de Inteligencia Artificial.")
 
 # ---------------- SIDEBAR ----------------
 with st.sidebar:
-    st.title("📌 Sobre este Portafolio")
-    st.write("""
-    Aquí encontrarás aplicaciones desarrolladas en:
-    
-    ✅ Visión por computadora  
-    ✅ OCR y documentos  
-    ✅ Control por voz  
-    ✅ Reconocimiento de escritura  
-    ✅ Traducción IA  
-    ✅ Sistemas ciberfísicos  
-    """)
-    st.info("💡 Haz clic en cada botón para abrir la aplicación.")
+    st.subheader("Aplicaciones con Inteligencia Artificial.")
+    parrafo = (
+        "La inteligencia artificial permite mejorar la toma de decisiones con el uso de datos, "
+        "automatizar tareas rutinarias y proporcionar análisis avanzados en tiempo real, lo que "
+        "resulta en una mayor eficiencia y precisión en diversos campos."
+    )
+    st.write(parrafo)
 
 # ---------------- ENLACE GENERAL ----------------
-st.subheader("🌐 Página Principal")
-st.markdown("[🚀 Abrir sitio principal](https://cmcorreaapps-myapps.streamlit.app/)")
+url_ia = "https://cmcorreaapps-myapps.streamlit.app/"
+st.subheader("En el siguiente enlace puedes encontrar páginas y ejercicios prácticos")
+st.write(f"Enlace para páginas y ejercicios: [Enlace]({url_ia})")
 
-st.markdown("---")
+# ---------------- COLUMNAS ----------------
+col1, col2, col3 = st.columns(3)
 
-# ---------------- APLICACIONES ----------------
-apps = [
-    {
-        "titulo": "🔍 Reconocimiento de Objetos (YOLO)",
-        "imagen": "txt_to_audio.png",
-        "descripcion": "Detecta objetos en imágenes con visión computacional.",
-        "link": "https://yolov5-o9vuxeujucdxmhfnqynr8h.streamlit.app/"
-    },
-    {
-        "titulo": "📄 Chat PDF Inteligente",
-        "imagen": "Chat_pdf.png",
-        "descripcion": "Analiza documentos PDF y responde preguntas.",
-        "link": "https://chatpdf-rg6mhi6hhsopbaasqgeujc.streamlit.app/"
-    },
-    {
-        "titulo": "🎤 Control por Voz MQTT",
-        "imagen": "voice_ctrl.jpg",
-        "descripcion": "Control de dispositivos usando voz.",
-        "link": "https://ctrlvoice-aosnsdxaemdnxox4g4dhn8.streamlit.app/"
-    },
-    {
-        "titulo": "✍️ Reconocimiento de Escritura",
-        "imagen": "OIG5.jpg",
-        "descripcion": "Reconoce números escritos a mano.",
-        "link": "https://drawrecog-zsogvkezvecvt3isbulwgf.streamlit.app/"
-    },
-    {
-        "titulo": "🧠 OCR + Audio + RAG",
-        "imagen": "OIG3.jpg",
-        "descripcion": "Extrae y analiza información de audio, imágenes y texto.",
-        "link": "https://ocr-audio-xqwj7rk5ypspm8gsykjixq.streamlit.app/"
-    },
-    {
-        "titulo": "🌎 Traductor Multimodal",
-        "imagen": "OIG8.jpg",
-        "descripcion": "Traducción de voz y texto.",
-        "link": "https://traductor-twencn4crpnz2wkrpggjgm.streamlit.app/"
-    },
-    {
-        "titulo": "🖼️ Vision App",
-        "imagen": "OIG4.jpg",
-        "descripcion": "Analiza imágenes con IA.",
-        "link": "https://visionapp-kmxmr5glehhw888dc6fwne.streamlit.app/"
-    },
-    {
-        "titulo": "☁️ WordCloud Inteligente",
-        "imagen": "wordcloud.jpg",
-        "descripcion": "Visualización avanzada de palabras.",
-        "link": "https://wordcloud-vmcqegj6fxwz8p7lprwkov.streamlit.app/"
-    },
-    {
-        "titulo": "📡 Sistema Ciberfísico",
-        "imagen": "OIG6.jpg",
-        "descripcion": "Interacción entre IA y sensores físicos.",
-        "link": "https://sendcmqtt-8jnbvrpiutqcbblad9p6lo.streamlit.app/"
-    }
-]
+# ---------------- COLUMNA 1 ----------------
+with col1:
 
-# REEMPLAZA SOLO ESTA PARTE:
-# cols = st.columns(3)
-# for i, app in enumerate(apps):
+    st.subheader("Reconocimiento de Objetos")
+    image = Image.open('txt_to_audio.png')
+    st.image(image, width=200)
+    st.write("En la siguiente enlace veremos como se detectan objetos en Imágenes.")
+    url = "https://yolov5-o9vuxeujucdxmhfnqynr8h.streamlit.app/"
+    st.write(f"YOLO: [Enlace]({url})")
 
-# ---------------- GRID DINÁMICO SIN ESPACIOS VACÍOS ----------------
-for row_start in range(0, len(apps), 3):
-    row_apps = apps[row_start:row_start + 3]
-    cols = st.columns(len(row_apps))  # Solo crea columnas necesarias
+    st.subheader("Reconocimiento de Escritura")
+    image = Image.open('OIG5.jpg')
+    st.image(image, width=200)
+    st.write("En la siguiente enlace veremos cómo reconocer números escritos a mano.")
+    url = "https://drawrecog-zsogvkezvecvt3isbulwgf.streamlit.app/"
+    st.write(f"Escritura: [Enlace]({url})")
 
-    for col, app in zip(cols, row_apps):
-        with col:
-            st.markdown('<div class="card">', unsafe_allow_html=True)
+    st.subheader("Sistema Ciberfísico")
+    image = Image.open('OIG6.jpg')
+    st.image(image, width=200)
+    st.write("En la siguiente enlace veremos interacción con el mundo físico.")
+    url = "https://sendcmqtt-8jnbvrpiutqcbblad9p6lo.streamlit.app/"
+    st.write(f"Ciberfísico: [Enlace]({url})")
 
-            st.markdown(f"### {app['titulo']}")
+# ---------------- COLUMNA 2 ----------------
+with col2:
 
-            try:
-                image = Image.open(app["imagen"])
-                st.image(image, use_container_width=True)
-            except:
-                st.warning("⚠️ Imagen no encontrada")
+    st.subheader("Conversión de voz a texto")
+    image = Image.open('OIG8.jpg')
+    st.image(image, width=200)
+    st.write("En la siguiente veremos una aplicación que usa la conversión de voz a texto.")
+    url = "https://traductor-twencn4crpnz2wkrpggjgm.streamlit.app/"
+    st.write(f"Voz a texto: [Enlace]({url})")
 
-            st.write(app["descripcion"])
+    st.subheader("Control por Voz")
+    image = Image.open('voice_ctrl.jpg')
+    st.image(image, width=200)
+    st.write("En la siguiente enlace veremos control de dispositivos usando voz.")
+    url = "https://ctrlvoice-aosnsdxaemdnxox4g4dhn8.streamlit.app/"
+    st.write(f"Control por Voz: [Enlace]({url})")
 
-            st.markdown(
-                f'<a class="link-button" href="{app["link"]}" target="_blank">🚀 Abrir App</a>',
-                unsafe_allow_html=True
-            )
+    st.subheader("OCR Audio e Imagen")
+    image = Image.open('OIG3.jpg')
+    st.image(image, width=200)
+    st.write("En la siguiente enlace veremos análisis de audio, imagen y texto.")
+    url = "https://ocr-audio-xqwj7rk5ypspm8gsykjixq.streamlit.app/"
+    st.write(f"OCR + Audio: [Enlace]({url})")
 
-            st.markdown("</div>", unsafe_allow_html=True)
-# ---------------- FOOTER ----------------
-st.markdown("---")
-st.caption("✨ Portafolio IA | Diseño organizado, mayor contraste y navegación clara.")
+# ---------------- COLUMNA 3 ----------------
+with col3:
+
+    st.subheader("Generación en Contexto")
+    image = Image.open('Chat_pdf.png')
+    st.image(image, width=190)
+    st.write("En la siguiente veremos una aplicación que usa RAG a partir de documentos.")
+    url = "https://chatpdf-rg6mhi6hhsopbaasqgeujc.streamlit.app/"
+    st.write(f"RAG: [Enlace]({url})")
+
+    st.subheader("Análisis de Imagen")
+    image = Image.open('OIG4.jpg')
+    st.image(image, width=200)
+    st.write("En la siguiente enlace veremos análisis inteligente de imágenes.")
+    url = "https://visionapp-kmxmr5glehhw888dc6fwne.streamlit.app/"
+    st.write(f"Vision: [Enlace]({url})")
+
+    st.subheader("WordCloud Inteligente")
+    image = Image.open('wordcloud.jpg')
+    st.image(image, width=200)
+    st.write("En la siguiente enlace veremos análisis visual de palabras.")
+    url = "https://wordcloud-vmcqegj6fxwz8p7lprwkov.streamlit.app/"
+    st.write(f"WordCloud: [Enlace]({url})")
