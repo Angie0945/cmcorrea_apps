@@ -1,217 +1,152 @@
-# =========================================================
-# 🌟 PORTAFOLIO FINAL - APLICACIONES DE INTELIGENCIA ARTIFICIAL
-# Estilo tipo profesor + links propios + diseño más bonito
-# =========================================================
-
 import streamlit as st
-from PIL import Image
 
-# =========================================================
-# CONFIGURACIÓN
-# =========================================================
-st.set_page_config(
-    page_title="Aplicaciones de Inteligencia Artificial",
-    page_icon="🤖",
-    layout="wide"
-)
+# --- CONFIGURACIÓN DE PÁGINA ---
+st.set_page_config(page_title="IA Portfolio", layout="wide")
 
-# =========================================================
-# ESTILOS VISUALES
-# =========================================================
+# --- ESTILO CSS PERSONALIZADO (MODERNO Y LIMPIO) ---
 st.markdown("""
-<style>
-
-/* Fondo */
-.stApp {
-    background: linear-gradient(135deg, #efe4ff, #f8f5ff);
-}
-
-/* Sidebar */
-[data-testid="stSidebar"] {
-    background-color: #34145c;
-}
-[data-testid="stSidebar"] * {
-    color: white !important;
-}
-
-/* Título principal */
-.main-title {
-    text-align: center;
-    font-size: 52px;
-    font-weight: 900;
-    color: #2d1457;
-    margin-bottom: 0;
-}
-
-/* Subtítulo */
-.subtitle {
-    text-align: center;
-    font-size: 22px;
-    color: #5c3b8a;
-    margin-bottom: 25px;
-}
-
-/* Tarjetas */
-.card {
-    background-color: white;
-    padding: 18px;
-    border-radius: 18px;
-    box-shadow: 0px 4px 15px rgba(0,0,0,0.12);
-    margin-bottom: 25px;
-    border: 2px solid #d8c1ff;
-}
-
-/* Links */
-a {
-    color: #6a0dad !important;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-a:hover {
-    color: #4b0082 !important;
-}
-
-/* Subheaders */
-h3 {
-    color: #34145c;
-}
-
-</style>
-""", unsafe_allow_html=True)
-
-# =========================================================
-# HEADER
-# =========================================================
-st.markdown('<div class="main-title">🤖 Aplicaciones de Inteligencia Artificial</div>', unsafe_allow_html=True)
-st.markdown('<div class="subtitle">✨ Portafolio de Angie Vargas | Interfaces Multimodales ✨</div>', unsafe_allow_html=True)
-
-# =========================================================
-# SIDEBAR
-# =========================================================
-with st.sidebar:
-    st.subheader("📚 Aplicaciones con Inteligencia Artificial")
-    st.write("""
-    La inteligencia artificial permite:
+    <style>
+    /* Fondo general */
+    .main {
+        background-color: #ffffff;
+    }
     
-    ✅ Mejorar la toma de decisiones  
-    ✅ Automatizar tareas rutinarias  
-    ✅ Analizar datos en tiempo real  
-    ✅ Crear interfaces multimodales  
-    ✅ Integrar visión, voz y sistemas físicos  
-    """)
-    st.success("🚀 Proyecto académico final")
+    /* Estilo de las Tarjetas (Cards) */
+    .project-card {
+        background-color: #fcfaff; /* Lila casi blanco */
+        border-radius: 15px;
+        padding: 20px;
+        margin-bottom: 25px;
+        border-left: 10px solid #6f42c1; /* Borde morado */
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        min-height: 420px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .project-card:hover {
+        transform: translateY(-5px);
+        border-left: 10px solid #e83e8c; /* Cambia a rosado al pasar el mouse */
+    }
 
-# =========================================================
-# ENLACE GENERAL
-# =========================================================
-url_ia = "https://sites.google.com/view/aplicacionesdeia/inicio"
+    /* Títulos y texto dentro de las cards */
+    .card-title {
+        color: #000000 !important;
+        font-weight: bold;
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+    
+    .card-text {
+        color: #333333 !important;
+        font-size: 0.95rem;
+        margin-bottom: 15px;
+    }
 
-st.subheader("🌍 Recursos, páginas y ejercicios prácticos")
-st.write(f"🔗 [Ir al sitio principal]({url_ia})")
+    /* Botones modernos */
+    .card-button {
+        background-color: #6f42c1;
+        color: white !important;
+        padding: 10px 20px;
+        border-radius: 20px;
+        text-decoration: none;
+        font-weight: bold;
+        display: inline-block;
+        margin-top: auto;
+    }
+    
+    .card-button:hover {
+        background-color: #e83e8c;
+    }
 
-# =========================================================
-# COLUMNAS
-# =========================================================
+    /* Ocultar barra lateral y menús innecesarios */
+    [data-testid="stSidebar"] {
+        display: none;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+# --- CABECERA ---
+st.markdown("<h1 style='text-align: center; color: #000000;'>✨ Mis Aplicaciones de IA ✨</h1>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; color: #6f42c1; font-size: 1.2rem;'>Explora mis proyectos de Inteligencia Artificial de forma rápida y visual.</p>", unsafe_allow_html=True)
+st.markdown("---")
+
+# --- FUNCIÓN PARA GENERAR TARJETAS ---
+def create_card(title, description, link, icon_url):
+    st.markdown(f"""
+        <div class="project-card">
+            <img src="{icon_url}" width="100" style="margin-bottom: 15px;">
+            <div class="card-title">{title}</div>
+            <p class="card-text">{description}</p>
+            <a class="card-button" href="{link}" target="_blank">🚀 Abrir Aplicación</a>
+        </div>
+    """, unsafe_allow_html=True)
+
+# --- GRID DE PROYECTOS (3 COLUMNAS) ---
 col1, col2, col3 = st.columns(3)
 
-# =========================================================
-# COLUMNA 1
-# =========================================================
 with col1:
+    create_card(
+        "Detección YOLO 🔍", 
+        "Identifica múltiples objetos en tiempo real con alta precisión.",
+        "https://yolov5-o9vuxeujucdxmhfnqynr8h.streamlit.app/",
+        "https://cdn-icons-png.flaticon.com/512/2589/2589175.png"
+    )
+    create_card(
+        "Chat con PDF 📄", 
+        "Sube tus archivos y haz preguntas directamente a tus documentos (RAG).",
+        "https://chatpdf-rg6mhi6hhsopbaasqgeujc.streamlit.app/",
+        "https://cdn-icons-png.flaticon.com/512/337/337946.png"
+    )
+    create_card(
+        "Nube de Palabras ☁️", 
+        "Visualiza los conceptos más importantes de cualquier texto.",
+        "https://wordcloud-vmcqegj6fxwz8p7lprwkov.streamlit.app/",
+        "https://cdn-icons-png.flaticon.com/512/3203/3203071.png"
+    )
 
-    st.subheader("🔍 Reconocimiento de Objetos")
-    try:
-        st.image(Image.open("txt_to_audio.png"), width=210)
-    except:
-        st.info("Agregar imagen: txt_to_audio.png")
-    st.write("Detección inteligente de objetos usando visión artificial.")
-    st.write("🔗 [Abrir App](https://yolov5-o9vuxeujucdxmhfnqynr8h.streamlit.app/)")
-
-    st.subheader("📄 Chat PDF Inteligente")
-    try:
-        st.image(Image.open("Chat_pdf.png"), width=210)
-    except:
-        st.info("Agregar imagen: Chat_pdf.png")
-    st.write("Consulta documentos PDF, imágenes y audios con análisis tipo RAG.")
-    st.write("🔗 [Abrir App](https://chatpdf-rg6mhi6hhsopbaasqgeujc.streamlit.app/)")
-
-    st.subheader("📝 OCR + Audio")
-    try:
-        st.image(Image.open("OIG3.jpg"), width=210)
-    except:
-        st.info("Agregar imagen: OIG3.jpg")
-    st.write("Extrae texto desde imágenes y audio para análisis.")
-    st.write("🔗 [Abrir App](https://ocr-audio-xqwj7rk5ypspm8gsykjixq.streamlit.app/)")
-
-# =========================================================
-# COLUMNA 2
-# =========================================================
 with col2:
+    create_card(
+        "Control por Voz 🗣️", 
+        "Interacción inteligente mediante comandos de voz procesados por IA.",
+        "https://ctrlvoice-aosnsdxaemdnxox4g4dhn8.streamlit.app/",
+        "https://cdn-icons-png.flaticon.com/512/1082/1082842.png"
+    )
+    create_card(
+        "Reconocimiento 🎨", 
+        "IA capaz de entender dibujos y dígitos escritos a mano.",
+        "https://drawrecog-zsogvkezvecvt3isbulwgf.streamlit.app/",
+        "https://cdn-icons-png.flaticon.com/512/588/588395.png"
+    )
+    create_card(
+        "Traductor IA 🌍", 
+        "Traducción multilingüe avanzada con contexto semántico.",
+        "https://traductor-twencn4crpnz2wkrpggjgm.streamlit.app/",
+        "https://cdn-icons-png.flaticon.com/512/3898/3898082.png"
+    )
 
-    st.subheader("🎤 Control por Voz MQTT")
-    try:
-        st.image(Image.open("voice_ctrl.jpg"), width=210)
-    except:
-        st.info("Agregar imagen: voice_ctrl.jpg")
-    st.write("Control de dispositivos físicos mediante comandos de voz.")
-    st.write("🔗 [Abrir App](https://ctrlvoice-aosnsdxaemdnxox4g4dhn8.streamlit.app/)")
-
-    st.subheader("✍️ Reconocimiento de Dígitos")
-    try:
-        st.image(Image.open("OIG8.jpg"), width=210)
-    except:
-        st.info("Agregar imagen: OIG8.jpg")
-    st.write("Reconocimiento de números escritos a mano.")
-    st.write("🔗 [Abrir App](https://drawrecog-zsogvkezvecvt3isbulwgf.streamlit.app/)")
-
-    st.subheader("🌐 MQTT Sender")
-    try:
-        st.image(Image.open("OIG6.jpg"), width=210)
-    except:
-        st.info("Agregar imagen: OIG6.jpg")
-    st.write("Envío de comandos y control de sistemas ciberfísicos.")
-    st.write("🔗 [Abrir App](https://sendcmqtt-8jnbvrpiutqcbblad9p6lo.streamlit.app/)")
-
-# =========================================================
-# COLUMNA 3
-# =========================================================
 with col3:
+    create_card(
+        "OCR & Audio 🎙️", 
+        "Extrae texto de imágenes y conviértelo en audio instantáneamente.",
+        "https://ocr-audio-xqwj7rk5ypspm8gsykjixq.streamlit.app/",
+        "https://cdn-icons-png.flaticon.com/512/802/802340.png"
+    )
+    create_card(
+        "Vision App 👁️", 
+        "Análisis visual profundo usando modelos GPT-4 Vision.",
+        "https://visionapp-kmxmr5glehhw888dc6fwne.streamlit.app/",
+        "https://cdn-icons-png.flaticon.com/512/2103/2103833.png"
+    )
+    create_card(
+        "IoT MQTT 🌐", 
+        "Conexión con el mundo físico mediante protocolos de sensores.",
+        "https://sendcmqtt-8jnbvrpiutqcbblad9p6lo.streamlit.app/",
+        "https://cdn-icons-png.flaticon.com/512/2344/2344654.png"
+    )
 
-    st.subheader("🖼️ Vision App")
-    try:
-        st.image(Image.open("OIG4.jpg"), width=210)
-    except:
-        st.info("Agregar imagen: OIG4.jpg")
-    st.write("Análisis visual avanzado con IA.")
-    st.write("🔗 [Abrir App](https://visionapp-kmxmr5glehhw888dc6fwne.streamlit.app/)")
-
-    st.subheader("🌎 Traductor Multimodal")
-    try:
-        st.image(Image.open("txt_to_audio2.png"), width=210)
-    except:
-        st.info("Agregar imagen: txt_to_audio2.png")
-    st.write("Convierte voz, texto e idioma en experiencias multimodales.")
-    st.write("🔗 [Abrir App](https://traductor-twencn4crpnz2wkrpggjgm.streamlit.app/)")
-
-    st.subheader("☁️ WordCloud IA")
-    try:
-        st.image(Image.open("data_analisis.png"), width=210)
-    except:
-        st.info("Agregar imagen: data_analisis.png")
-    st.write("Visualización creativa de datos y palabras clave.")
-    st.write("🔗 [Abrir App](https://wordcloud-vmcqegj6fxwz8p7lprwkov.streamlit.app/)")
-
-# =========================================================
-# PROYECTO EXTRA
-# =========================================================
-st.markdown("---")
-st.subheader("⭐ Proyecto Especial")
-st.write("🧠 Aplicación adicional de experimentación en IA:")
-st.write("🔗 [Abrir Proyecto](https://dxhjstjwszpkfh6g79wucg.streamlit.app/)")
-
-# =========================================================
-# FOOTER
-# =========================================================
-st.markdown("---")
-st.caption("💜 Diseñado por Angie Vargas | Streamlit + IA + Interfaces Multimodales")
+# --- PIE DE PÁGINA ---
+st.markdown("<br><br><p style='text-align: center; color: #888;'>Hecho con ❤️ y Streamlit</p>", unsafe_allow_html=True)
