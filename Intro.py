@@ -98,7 +98,7 @@ with col1:
     create_card(
         "Chat con PDF 📄", 
         "Sube tus archivos y haz preguntas directamente a tus documentos (RAG).",
-        "https://https://chatpdf-cyzzvlqfzyjrt85er7txmd.streamlit.app//",
+        "https://https://https://chatpdf-cyzzvlqfzyjrt85er7txmd.streamlit.app/",
         "https://cdn-icons-png.flaticon.com/512/337/337946.png"
     )
     create_card(
