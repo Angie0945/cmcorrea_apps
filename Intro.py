@@ -1,95 +1,217 @@
+# =========================================================
+# 🌟 PORTAFOLIO FINAL - APLICACIONES DE INTELIGENCIA ARTIFICIAL
+# Estilo tipo profesor + links propios + diseño más bonito
+# =========================================================
+
 import streamlit as st
 from PIL import Image
 
-# ---------------- TÍTULO ----------------
-st.title("Aplicaciones de Inteligencia Artificial.")
+# =========================================================
+# CONFIGURACIÓN
+# =========================================================
+st.set_page_config(
+    page_title="Aplicaciones de Inteligencia Artificial",
+    page_icon="🤖",
+    layout="wide"
+)
 
-# ---------------- SIDEBAR ----------------
+# =========================================================
+# ESTILOS VISUALES
+# =========================================================
+st.markdown("""
+<style>
+
+/* Fondo */
+.stApp {
+    background: linear-gradient(135deg, #efe4ff, #f8f5ff);
+}
+
+/* Sidebar */
+[data-testid="stSidebar"] {
+    background-color: #34145c;
+}
+[data-testid="stSidebar"] * {
+    color: white !important;
+}
+
+/* Título principal */
+.main-title {
+    text-align: center;
+    font-size: 52px;
+    font-weight: 900;
+    color: #2d1457;
+    margin-bottom: 0;
+}
+
+/* Subtítulo */
+.subtitle {
+    text-align: center;
+    font-size: 22px;
+    color: #5c3b8a;
+    margin-bottom: 25px;
+}
+
+/* Tarjetas */
+.card {
+    background-color: white;
+    padding: 18px;
+    border-radius: 18px;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.12);
+    margin-bottom: 25px;
+    border: 2px solid #d8c1ff;
+}
+
+/* Links */
+a {
+    color: #6a0dad !important;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #4b0082 !important;
+}
+
+/* Subheaders */
+h3 {
+    color: #34145c;
+}
+
+</style>
+""", unsafe_allow_html=True)
+
+# =========================================================
+# HEADER
+# =========================================================
+st.markdown('<div class="main-title">🤖 Aplicaciones de Inteligencia Artificial</div>', unsafe_allow_html=True)
+st.markdown('<div class="subtitle">✨ Portafolio de Angie Vargas | Interfaces Multimodales ✨</div>', unsafe_allow_html=True)
+
+# =========================================================
+# SIDEBAR
+# =========================================================
 with st.sidebar:
-    st.subheader("Aplicaciones con Inteligencia Artificial.")
-    parrafo = (
-        "La inteligencia artificial permite mejorar la toma de decisiones con el uso de datos, "
-        "automatizar tareas rutinarias y proporcionar análisis avanzados en tiempo real, lo que "
-        "resulta en una mayor eficiencia y precisión en diversos campos."
-    )
-    st.write(parrafo)
+    st.subheader("📚 Aplicaciones con Inteligencia Artificial")
+    st.write("""
+    La inteligencia artificial permite:
+    
+    ✅ Mejorar la toma de decisiones  
+    ✅ Automatizar tareas rutinarias  
+    ✅ Analizar datos en tiempo real  
+    ✅ Crear interfaces multimodales  
+    ✅ Integrar visión, voz y sistemas físicos  
+    """)
+    st.success("🚀 Proyecto académico final")
 
-# ---------------- ENLACE GENERAL ----------------
-url_ia = "https://cmcorreaapps-myapps.streamlit.app/"
-st.subheader("En el siguiente enlace puedes encontrar páginas y ejercicios prácticos")
-st.write(f"Enlace para páginas y ejercicios: [Enlace]({url_ia})")
+# =========================================================
+# ENLACE GENERAL
+# =========================================================
+url_ia = "https://sites.google.com/view/aplicacionesdeia/inicio"
 
-# ---------------- COLUMNAS ----------------
+st.subheader("🌍 Recursos, páginas y ejercicios prácticos")
+st.write(f"🔗 [Ir al sitio principal]({url_ia})")
+
+# =========================================================
+# COLUMNAS
+# =========================================================
 col1, col2, col3 = st.columns(3)
 
-# ---------------- COLUMNA 1 ----------------
+# =========================================================
+# COLUMNA 1
+# =========================================================
 with col1:
 
-    st.subheader("Reconocimiento de Objetos")
-    image = Image.open('txt_to_audio.png')
-    st.image(image, width=200)
-    st.write("En la siguiente enlace veremos como se detectan objetos en Imágenes.")
-    url = "https://yolov5-o9vuxeujucdxmhfnqynr8h.streamlit.app/"
-    st.write(f"YOLO: [Enlace]({url})")
+    st.subheader("🔍 Reconocimiento de Objetos")
+    try:
+        st.image(Image.open("txt_to_audio.png"), width=210)
+    except:
+        st.info("Agregar imagen: txt_to_audio.png")
+    st.write("Detección inteligente de objetos usando visión artificial.")
+    st.write("🔗 [Abrir App](https://yolov5-o9vuxeujucdxmhfnqynr8h.streamlit.app/)")
 
-    st.subheader("Reconocimiento de Escritura")
-    image = Image.open('OIG5.jpg')
-    st.image(image, width=200)
-    st.write("En la siguiente enlace veremos cómo reconocer números escritos a mano.")
-    url = "https://drawrecog-zsogvkezvecvt3isbulwgf.streamlit.app/"
-    st.write(f"Escritura: [Enlace]({url})")
+    st.subheader("📄 Chat PDF Inteligente")
+    try:
+        st.image(Image.open("Chat_pdf.png"), width=210)
+    except:
+        st.info("Agregar imagen: Chat_pdf.png")
+    st.write("Consulta documentos PDF, imágenes y audios con análisis tipo RAG.")
+    st.write("🔗 [Abrir App](https://chatpdf-rg6mhi6hhsopbaasqgeujc.streamlit.app/)")
 
-    st.subheader("Sistema Ciberfísico")
-    image = Image.open('OIG6.jpg')
-    st.image(image, width=200)
-    st.write("En la siguiente enlace veremos interacción con el mundo físico.")
-    url = "https://sendcmqtt-8jnbvrpiutqcbblad9p6lo.streamlit.app/"
-    st.write(f"Ciberfísico: [Enlace]({url})")
+    st.subheader("📝 OCR + Audio")
+    try:
+        st.image(Image.open("OIG3.jpg"), width=210)
+    except:
+        st.info("Agregar imagen: OIG3.jpg")
+    st.write("Extrae texto desde imágenes y audio para análisis.")
+    st.write("🔗 [Abrir App](https://ocr-audio-xqwj7rk5ypspm8gsykjixq.streamlit.app/)")
 
-# ---------------- COLUMNA 2 ----------------
+# =========================================================
+# COLUMNA 2
+# =========================================================
 with col2:
 
-    st.subheader("Conversión de voz a texto")
-    image = Image.open('OIG8.jpg')
-    st.image(image, width=200)
-    st.write("En la siguiente veremos una aplicación que usa la conversión de voz a texto.")
-    url = "https://traductor-twencn4crpnz2wkrpggjgm.streamlit.app/"
-    st.write(f"Voz a texto: [Enlace]({url})")
+    st.subheader("🎤 Control por Voz MQTT")
+    try:
+        st.image(Image.open("voice_ctrl.jpg"), width=210)
+    except:
+        st.info("Agregar imagen: voice_ctrl.jpg")
+    st.write("Control de dispositivos físicos mediante comandos de voz.")
+    st.write("🔗 [Abrir App](https://ctrlvoice-aosnsdxaemdnxox4g4dhn8.streamlit.app/)")
 
-    st.subheader("Control por Voz")
-    image = Image.open('voice_ctrl.jpg')
-    st.image(image, width=200)
-    st.write("En la siguiente enlace veremos control de dispositivos usando voz.")
-    url = "https://ctrlvoice-aosnsdxaemdnxox4g4dhn8.streamlit.app/"
-    st.write(f"Control por Voz: [Enlace]({url})")
+    st.subheader("✍️ Reconocimiento de Dígitos")
+    try:
+        st.image(Image.open("OIG8.jpg"), width=210)
+    except:
+        st.info("Agregar imagen: OIG8.jpg")
+    st.write("Reconocimiento de números escritos a mano.")
+    st.write("🔗 [Abrir App](https://drawrecog-zsogvkezvecvt3isbulwgf.streamlit.app/)")
 
-    st.subheader("OCR Audio e Imagen")
-    image = Image.open('OIG3.jpg')
-    st.image(image, width=200)
-    st.write("En la siguiente enlace veremos análisis de audio, imagen y texto.")
-    url = "https://ocr-audio-xqwj7rk5ypspm8gsykjixq.streamlit.app/"
-    st.write(f"OCR + Audio: [Enlace]({url})")
+    st.subheader("🌐 MQTT Sender")
+    try:
+        st.image(Image.open("OIG6.jpg"), width=210)
+    except:
+        st.info("Agregar imagen: OIG6.jpg")
+    st.write("Envío de comandos y control de sistemas ciberfísicos.")
+    st.write("🔗 [Abrir App](https://sendcmqtt-8jnbvrpiutqcbblad9p6lo.streamlit.app/)")
 
-# ---------------- COLUMNA 3 ----------------
+# =========================================================
+# COLUMNA 3
+# =========================================================
 with col3:
 
-    st.subheader("Generación en Contexto")
-    image = Image.open('Chat_pdf.png')
-    st.image(image, width=190)
-    st.write("En la siguiente veremos una aplicación que usa RAG a partir de documentos.")
-    url = "https://chatpdf-rg6mhi6hhsopbaasqgeujc.streamlit.app/"
-    st.write(f"RAG: [Enlace]({url})")
+    st.subheader("🖼️ Vision App")
+    try:
+        st.image(Image.open("OIG4.jpg"), width=210)
+    except:
+        st.info("Agregar imagen: OIG4.jpg")
+    st.write("Análisis visual avanzado con IA.")
+    st.write("🔗 [Abrir App](https://visionapp-kmxmr5glehhw888dc6fwne.streamlit.app/)")
 
-    st.subheader("Análisis de Imagen")
-    image = Image.open('OIG4.jpg')
-    st.image(image, width=200)
-    st.write("En la siguiente enlace veremos análisis inteligente de imágenes.")
-    url = "https://visionapp-kmxmr5glehhw888dc6fwne.streamlit.app/"
-    st.write(f"Vision: [Enlace]({url})")
+    st.subheader("🌎 Traductor Multimodal")
+    try:
+        st.image(Image.open("txt_to_audio2.png"), width=210)
+    except:
+        st.info("Agregar imagen: txt_to_audio2.png")
+    st.write("Convierte voz, texto e idioma en experiencias multimodales.")
+    st.write("🔗 [Abrir App](https://traductor-twencn4crpnz2wkrpggjgm.streamlit.app/)")
 
-    st.subheader("WordCloud Inteligente")
-    image = Image.open('wordcloud.jpg')
-    st.image(image, width=200)
-    st.write("En la siguiente enlace veremos análisis visual de palabras.")
-    url = "https://wordcloud-vmcqegj6fxwz8p7lprwkov.streamlit.app/"
-    st.write(f"WordCloud: [Enlace]({url})")
+    st.subheader("☁️ WordCloud IA")
+    try:
+        st.image(Image.open("data_analisis.png"), width=210)
+    except:
+        st.info("Agregar imagen: data_analisis.png")
+    st.write("Visualización creativa de datos y palabras clave.")
+    st.write("🔗 [Abrir App](https://wordcloud-vmcqegj6fxwz8p7lprwkov.streamlit.app/)")
+
+# =========================================================
+# PROYECTO EXTRA
+# =========================================================
+st.markdown("---")
+st.subheader("⭐ Proyecto Especial")
+st.write("🧠 Aplicación adicional de experimentación en IA:")
+st.write("🔗 [Abrir Proyecto](https://dxhjstjwszpkfh6g79wucg.streamlit.app/)")
+
+# =========================================================
+# FOOTER
+# =========================================================
+st.markdown("---")
+st.caption("💜 Diseñado por Angie Vargas | Streamlit + IA + Interfaces Multimodales")
