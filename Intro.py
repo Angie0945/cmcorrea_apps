@@ -178,30 +178,35 @@ apps = [
     }
 ]
 
-# ---------------- GRID ----------------
-cols = st.columns(3)
+# REEMPLAZA SOLO ESTA PARTE:
+# cols = st.columns(3)
+# for i, app in enumerate(apps):
 
-for i, app in enumerate(apps):
-    with cols[i % 3]:
-        st.markdown('<div class="card">', unsafe_allow_html=True)
+# ---------------- GRID DINÁMICO SIN ESPACIOS VACÍOS ----------------
+for row_start in range(0, len(apps), 3):
+    row_apps = apps[row_start:row_start + 3]
+    cols = st.columns(len(row_apps))  # Solo crea columnas necesarias
 
-        st.markdown(f"### {app['titulo']}")
+    for col, app in zip(cols, row_apps):
+        with col:
+            st.markdown('<div class="card">', unsafe_allow_html=True)
 
-        try:
-            image = Image.open(app["imagen"])
-            st.image(image, use_container_width=True)
-        except:
-            st.warning("⚠️ Imagen no encontrada")
+            st.markdown(f"### {app['titulo']}")
 
-        st.write(app["descripcion"])
+            try:
+                image = Image.open(app["imagen"])
+                st.image(image, use_container_width=True)
+            except:
+                st.warning("⚠️ Imagen no encontrada")
 
-        st.markdown(
-            f'<a class="link-button" href="{app["link"]}" target="_blank">🚀 Abrir App</a>',
-            unsafe_allow_html=True
-        )
+            st.write(app["descripcion"])
 
-        st.markdown("</div>", unsafe_allow_html=True)
+            st.markdown(
+                f'<a class="link-button" href="{app["link"]}" target="_blank">🚀 Abrir App</a>',
+                unsafe_allow_html=True
+            )
 
+            st.markdown("</div>", unsafe_allow_html=True)
 # ---------------- FOOTER ----------------
 st.markdown("---")
 st.caption("✨ Portafolio IA | Diseño organizado, mayor contraste y navegación clara.")
