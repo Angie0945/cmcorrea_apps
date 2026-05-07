@@ -156,8 +156,7 @@ with col4:
         "https://sendcmqtt-8jnbvrpiutqcbblad9p6lo.streamlit.app/",
         "https://cdn-icons-png.flaticon.com/512/2344/2344654.png"
     )
-
-st.markdown("<br><p style='text-align: center; color: #aaa; font-size: 0.8rem;'>© 2026 Portafolio Digital de IA</p>", unsafe_allow_html=True)
-
 # --- PIE DE PÁGINA ---
 st.markdown("<br><br><p style='text-align: center; color: #888;'>Hecho con ❤️ y Streamlit</p>", unsafe_allow_html=True)
+
+st.markdown("<br><p style='text-align: center; color: #aaa; font-size: 0.8rem;'>© 2026 Portafolio Digital de IA</p>", unsafe_allow_html=True)
