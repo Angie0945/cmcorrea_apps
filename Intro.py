@@ -200,4 +200,4 @@ with col4:
     )
 
 # --- PIE DE PÁGINA ---
-st.markdown("<br><br><p style='text-align: center; color: #bbb; font-size: 0.85rem;'>Diseñado para la excelencia en Inteligencia Artificial | 2026</p>", unsafe_allow_html=True)
+st.markdown("<br><br><p style='text-align: center; color: #bbb; font-size: 0.85rem;'>Diseñado por Angie Vargas  | 2026</p>", unsafe_allow_html=True)
